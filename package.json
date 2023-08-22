@@ -1,5 +1,5 @@
 {
-  "name": "fraudnetic-node-integration",
+  "name": "fraudnetic-node",
   "version": "1.0.0",
   "description": "Fraudnetic integration for Node projects",
   "main": "lib/index.js",
