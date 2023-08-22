@@ -11,9 +11,11 @@ npm install fraudnetic-node
 ### Express integration
 ```javascript
 import express from 'express';
+import { Fraudnetic } from 'fraudnetic-node';
 const app = express();
+// pay attention to the protocol, not specified in the server address
 const fraudnetic = new Fraudnetic({
-  servers: ['http://localhost:3000'],
+  servers: ['localhost:3000'],
   key: 'key',
   secret: 'secret',
 });
