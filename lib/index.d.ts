@@ -8,5 +8,6 @@ export declare class Fraudnetic {
         servers: string[];
         key: string;
         secret: string;
+        secure?: boolean;
     });
 }

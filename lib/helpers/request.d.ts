@@ -3,7 +3,8 @@ export default class Request {
     private _server;
     private _key;
     private _secret;
-    constructor(_server: string[], _key: string, _secret: string);
+    private _secure;
+    constructor(_server: string[], _key: string, _secret: string, secure?: boolean);
     makeRequest(data: qObject, task?: string): Promise<{
         error: boolean;
         message: string;
