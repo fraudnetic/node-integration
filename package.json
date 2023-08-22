@@ -1,0 +1,21 @@
+{
+  "name": "fraudnetic-node-integration",
+  "version": "1.0.0",
+  "description": "Fraudnetic integration for Node projects",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fraudnetic/node-integration.git"
+  },
+  "keywords": [
+    "fraudnetic",
+    "typescript"
+  ],
+  "author": "Davit G.",
+  "license": "MIT",
+  "homepage": "https://github.com/fraudnetic/node-integration",
+  "files": [
+    "lib/**/*"
+  ]
+}
