@@ -8,6 +8,16 @@ npm install fraudnetic-node
 
 ## Usage
 
+### Options
+
+| Option | Type | Description | Default |
+| ------ | ---- | ----------- | ------- |
+| server | string | array of servers, for example ['localhost:3000'] | [] |
+| key | string | your key | '' |
+| secret | string | your secret | '' |
+| secure | boolean | use https or http protocol | true |
+
+
 ### Express integration
 ```javascript
 import express from 'express';
@@ -29,9 +39,11 @@ app.get('/', (req: express.Request, res: express.Response) => {
 ### Fastify integration
 ```javascript
 import fastify from 'fastify';
+import { Fraudnetic } from 'fraudnetic-node';
 const app = fastify();
+// pay attention to the protocol, not specified in the server address
 const fraudnetic = new Fraudnetic({
-  servers: ['http://localhost:3000'],
+  servers: ['localhost:3000'],
   key: 'key',
   secret: 'secret',
 });
