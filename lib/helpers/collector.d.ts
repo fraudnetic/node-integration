@@ -22,5 +22,19 @@ export default class Collector {
     sportBet(): void;
     casinoSpin(): void;
     gameBet(): void;
+    userInfo(data: {
+        userID: string | number;
+        version: string;
+        affiliateID: string;
+        affiliateName: string;
+        country: string;
+        email: string;
+        fullName: string;
+        isActive: boolean;
+        passwordHash: string | number;
+        phoneNumber: string | number;
+        registrationAt: string;
+        username: string | number;
+    }): void;
     p2pGameBet(): void;
 }
