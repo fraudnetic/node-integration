@@ -9,6 +9,12 @@ export default class Collector {
     constructor(request: Request);
     addActionEvent(action: string): void;
     user(userID: string | number): Collector;
+    amount(amount: string | number): Collector;
+    currency(currency: string): Collector;
+    betID(betID: string | number): Collector;
+    ticketID(ticketID: string | number): Collector;
+    documentID(documentID: string | number): Collector;
+    phoneNumber(phoneNumber: string | number): Collector;
     registration(): void;
     login(): void;
     phoneNumberVerification(): void;

@@ -10,12 +10,12 @@ npm install fraudnetic-node
 
 ### Options
 
-| Option | Type | Description | Default |
-| ------ | ---- | ----------- | ------- |
-| server | string | array of servers, for example ['localhost:3000'] | [] |
-| key | string | your key | '' |
-| secret | string | your secret | '' |
-| secure | boolean | use https or http protocol | true |
+| Option | Type    | Description                                      | Default |
+|--------|---------|--------------------------------------------------|---------|
+| server | string  | array of servers, for example ['localhost:3000'] | []      |
+| key    | string  | your key                                         | ''      |
+| secret | string  | your secret                                      | ''      |
+| secure | boolean | use https or http protocol                       | true    |
 
 
 ### Express integration
@@ -36,25 +36,6 @@ app.get('/', (req: express.Request, res: express.Response) => {
 });
 ```
 
-### Fastify integration
-```javascript
-import fastify from 'fastify';
-import { Fraudnetic } from 'fraudnetic-node';
-const app = fastify();
-// pay attention to the protocol, not specified in the server address
-const fraudnetic = new Fraudnetic({
-  servers: ['localhost:3000'],
-  key: 'key',
-  secret: 'secret',
-});
-// if fastify integration use
-app.addHook('onRequest', fraudnetic.fastify);
-
-app.get('/', (request: FastifyRequest, reply: FastifyReply) => {
-  reply.send(request.fraudnetic.test);
-});
-```
-
 ## API methods
 
 ### events
@@ -70,9 +51,11 @@ req.fraudnetic.user('123').phoneNumberVerification();
 
 // User '123' verifies their email address
 req.fraudnetic.user('123').emailVerification();
-
+/*
+* Optional fields - documentID
+* */
 // User '123' performs document verification
-req.fraudnetic.user('123').documentVerification();
+req.fraudnetic.user('123').documentID("testid").documentVerification();
 
 // User '123' initiates a password reset
 req.fraudnetic.user('123').passwordReset();
@@ -83,21 +66,25 @@ req.fraudnetic.user('123').emailChange();
 // User '123' changes their phone number
 req.fraudnetic.user('123').phoneNumberChange();
 
+/*
+* Optional fields - amount,currency,betID,ticketID
+* */
+
 // User '123' makes a deposit
-req.fraudnetic.user('123').deposit();
+req.fraudnetic.user('123').amount(100.20).currecy("EUR").deposit();
 
 // User '123' initiates a withdrawal
-req.fraudnetic.user('123').withdraw();
+req.fraudnetic.user('123').amount(100.20).currecy("EUR").withdraw();
 
 // User '123' places a sports bet
-req.fraudnetic.user('123').sportBet();
+req.fraudnetic.user('123').amount(100.20).currecy("EUR").betID("someid").ticketID("x-ticket").sportBet();
 
 // User '123' spins a casino slot
-req.fraudnetic.user('123').casinoSpin();
+req.fraudnetic.user('123').amount(100.20).currecy("EUR").betID("someid").casinoSpin();
 
 // User '123' places a game bet
-req.fraudnetic.user('123').gameBet();
+req.fraudnetic.user('123').amount(100.20).currecy("EUR").betID("someid").gameBet();
 
 // User '123' places a P2P game bet
-req.fraudnetic.user('123').p2pGameBet();
+req.fraudnetic.user('123').amount(100.20).currecy("EUR").betID("someid").p2pGameBet();
 ```
